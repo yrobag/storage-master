@@ -7,9 +7,7 @@ export const onMessageListener = (
   const { action, tab, key, value, data } = msg;
   const storage =
     tab === "localStorage" ? window.localStorage : window.sessionStorage;
-  if (action === "getAll") {
-    sendResponse({ items: getAllStorage(tab) });
-  } else if (action === "set") {
+  if (action === "set") {
     storage.setItem(key, value);
     sendResponse({ success: true });
   } else if (action === "remove") {
@@ -21,19 +19,26 @@ export const onMessageListener = (
   } else if (action === "import") {
     Object.entries(data).forEach(([k, v]) => storage.setItem(k, String(v)));
     sendResponse({ success: true });
+  } else if (action === "sync") {
+    // do nothing, items will be synced by storage event
   }
+  const items = getAllStorage(tab);
+  chrome.runtime.sendMessage({
+    namespace: "storage-master",
+    action: "storageChanged",
+    tab,
+    items,
+  });
   return true;
 };
 
-function getAllStorage(type: "localStorage" | "sessionStorage") {
+export function getAllStorage(type: "localStorage" | "sessionStorage") {
   const storage =
     type === "localStorage" ? window.localStorage : window.sessionStorage;
-  const data: Record<string, string> = {};
-  for (let i = 0; i < storage.length; i++) {
-    const key = storage.key(i)!;
-    data[key] = storage.getItem(key) ?? "";
-  }
-  return data;
+  return Object.keys(storage).map((key) => ({
+    key,
+    value: storage.getItem(key) ?? "",
+  }));
 }
 
 interface Message {

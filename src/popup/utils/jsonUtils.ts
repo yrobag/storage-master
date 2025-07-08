@@ -1,5 +1,3 @@
-// Utility functions for JSON formatting and validation
-
 export function isJSON(str: string): boolean {
   try {
     JSON.parse(str);

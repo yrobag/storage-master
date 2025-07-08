@@ -2,7 +2,7 @@
 export type StorageAction =
   | {
       namespace: "storage-master";
-      action: "getAll";
+      action: "sync";
       tab: "localStorage" | "sessionStorage";
     }
   | {

@@ -8,7 +8,6 @@ import {
 
 import App from "../App";
 import { describe, it, expect, beforeEach, vi } from "vitest";
-// TODO: improve tests - use findByText instead of getByText with waitFor and improve mocks
 
 describe("Storage Master App", () => {
   beforeEach(() => {
@@ -121,6 +120,8 @@ describe("Storage Master App", () => {
       target: { value: "one" },
     });
     fireEvent.click(screen.getByText(/^Save$/i));
+    await screen.findByText("alpha");
+
     fireEvent.click(screen.getByText(/Add/i));
     fireEvent.change(screen.getByPlaceholderText("Key"), {
       target: { value: "beta" },
@@ -129,11 +130,14 @@ describe("Storage Master App", () => {
       target: { value: "two" },
     });
     fireEvent.click(screen.getByText(/^Save$/i));
+
     await screen.findByText("alpha");
+    await screen.findByText("beta");
+
     fireEvent.change(screen.getByPlaceholderText(/search/i), {
       target: { value: "beta" },
     });
-    screen.getByText("beta");
+    await screen.findByText("beta");
     expect(screen.queryByText("alpha")).toBeNull();
   });
 

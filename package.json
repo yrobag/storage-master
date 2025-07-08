@@ -1,10 +1,12 @@
 {
   "name": "browserstorages",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev:general": "vite build --watch --minify=false --emptyOutDir=false",
+    "dev:content": "vite build --config vite.cs.config.ts --watch --emptyOutDir=false --minify=false",
+    "dev": "npm run dev:general & npm run dev:content",
     "build:content": "vite build --config vite.cs.config.ts --emptyOutDir=false",
     "build": "vite build && npm run build:content",
     "lint": "eslint .",
