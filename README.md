@@ -1,6 +1,12 @@
-# StorageMaser
+<div align="center">
+  <img src="images/small_banner.png" alt="StorageMaster Logo" width="600" />
+</div>
+
+# StorageMaster
 
 An open source Chrome extension for managing and inspecting browser storage (localStorage and sessionStorage) in real time.
+
+[Available in Chrome Web Store](https://chromewebstore.google.com/detail/storage-master/bkfaphenafnijkmhfnnomifhcfcilbob)
 
 ## Features
 
@@ -17,7 +23,7 @@ An open source Chrome extension for managing and inspecting browser storage (loc
 
 ```sh
 git clone https://github.com/yrobag/storage-master
-cd storagemaser
+cd storage-master
 ```
 
 ### 2. Install dependencies
