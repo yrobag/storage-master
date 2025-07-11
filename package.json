@@ -1,8 +1,9 @@
 {
-  "name": "browserstorages",
+  "name": "StorageMaster",
   "private": true,
   "version": "1.0.0",
   "type": "module",
+  "license": "MIT",
   "scripts": {
     "dev:general": "vite build --watch --minify=false --emptyOutDir=false",
     "dev:content": "vite build --config vite.cs.config.ts --watch --emptyOutDir=false --minify=false",

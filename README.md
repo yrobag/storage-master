@@ -16,7 +16,7 @@ An open source Chrome extension for managing and inspecting browser storage (loc
 ### 1. Clone the repository
 
 ```sh
-git clone https://github.com/yourusername/storagemaser.git
+git clone https://github.com/yrobag/storage-master
 cd storagemaser
 ```
 
@@ -48,5 +48,3 @@ The built extension will be in the `dist/` directory.
 2. Enable **Developer mode** (toggle in the top right).
 3. Click **Load unpacked**.
 4. Select the `dist/` directory inside the project root.
-
-The StorageMaser icon should now appear in your Chrome toolbar.
